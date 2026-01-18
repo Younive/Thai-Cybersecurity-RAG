@@ -60,6 +60,37 @@ echo "GOOGLE_API_KEY=your_api_key_here" > .env
 uv run python src/rag_pipeline.py
 ```
 
+Expected output:
+```bash
+Initialized RAG pipeline
+============================================================
+RAG PIPELINE - PROCESSING ALL DOCUMENTS
+============================================================
+
+Extracting Textbook...
+✓ Extracted 521 items from 46 pages
+
+Extracting Slide Deck...
+✓ Extracted 349 items from 41 slides
+
+Extracting Thai PDF...
+✓ Extracted 126 items from 77 pages
+
+Total extracted contents: 996
+
+Chunking all content...
+Created 1055 chunks
+
+Creating vector store...
+Stored 1055 chunks in rag_knowledge_base
+
+============================================================
+PROCESSING COMPLETE
+============================================================
+```
+If successful: You'll see a new `chroma_db/` folder created.
+
+
 6. Launch the Application (application will run on localhost:7860)
 ```bash
 uv run python src/app.py
@@ -71,7 +102,7 @@ cyber-rag-assignment/
 ├── src/
 │   ├── app.py                          # Gradio web interface
 │   ├── rag_pipeline.py                 # Document processing pipeline
-│   ├── retrieval.py                    # Retrieval functions
+│   ├── retrieval.py                    # testing and experimenting retrieval functions 
 │   ├── prompt_template.py              # RAG prompt templates
 │   ├── extractors/
 │   │    ├── __init__.py
@@ -127,7 +158,16 @@ Broken Access Control vulnerabilities include violation of the principle of leas
 **2. What website security controls are required by the Thailand Web Security Standard?**
 #### RAG Response
 
-This information is not available in the provided documents. The provided documents include bibliographic references related to Thailand web security standards, but do not specify the required security controls.
+This document outlines several recommendations and guidelines related to website security, but it does not explicitly list required website security controls. It references several frameworks and standards that can be used to improve website security. These include:
+
+NIST Cybersecurity Framework (CSF) 2.0 [Source: thailand-web-security-standard-2025.pdf, Page 11]
+NIST Special Publication 800-88 Guidelines for Media Sanitization [Source: thailand-web-security-standard-2025.pdf, Page 11]
+OWASP (Open Worldwide Application Security Project) recommendations for website security risks [Source: thailand-web-security-standard-2025.pdf, Page 11]
+National Cyber Security Committee's standard on cloud security [Source: thailand-web-security-standard-2025.pdf, Page 10]
+National Cyber Security Agency's guidelines on website security for government and critical infrastructure agencies [Source: thailand-web-security-standard-2025.pdf, Page 10]
+The Electronic Transactions Development Agency's recommendations on security standards for web applications [Source: thailand-web-security-standard-2025.pdf, Page 10]
+Digital Government Development Agency's Government Website Standard Version 3.0 [Source: thailand-web-security-standard-2025.pdf, Page 10]
+The document also mentions the importance of establishing security guidelines to protect websites and data based on the priority of assets and resources [Source: thailand-web-security-standard-2025.pdf, Page 23]. The document states that organizations should consider three fundamental security characteristics [Source: thailand-web-security-standard-2025.pdf, Page 23]. It also mentions performing vulnerability assessments of critical services, covering the security of computer systems, network infrastructure, web servers, and web applications [Source: thailand-web-security-standard-2025.pdf, Page 7].
 
 ----------------------------- 
 
@@ -152,7 +192,8 @@ The provided documents describe persistence techniques and give examples, but do
 
 
 ## Further Optimization
-- Hybrid search (keyword and semantic)
 - Conversation memory
-- Query Expansion for Thai Language
 - Advanced citation formatting
+- better thai language content extraction
+- self-host LLM
+- Advanced chunking and indexing strategy

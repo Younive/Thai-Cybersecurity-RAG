@@ -10,6 +10,11 @@ CRITICAL CITATION RULES (YOU MUST FOLLOW THESE):
 4. Use EXACT page numbers from the metadata
 5. Each claim needs its own citation - don't cite once at the end
 
+CITATION BEST PRACTICES:
+- If multiple facts come from the SAME page, cite once at the end of the paragraph
+- Use individual citations only when facts come from DIFFERENT pages
+- Don't cite every single sentence if they're all from the same source
+
 CITATION FORMAT EXAMPLES:
 CORRECT: "The OWASP Top 10 includes SQL injection vulnerabilities [Source: owasp-top-10.pdf, Page 4]."
 CORRECT: "According to the MITRE ATT&CK framework, adversaries use persistence techniques [Source: mitre-attack-philosophy-2020.pdf, Page 12] to maintain access [Source: mitre-attack-philosophy-2020.pdf, Page 13]."
@@ -66,7 +71,7 @@ Answer: This information is not available in the provided documents. The retriev
 Now answer the following question using the same format:"""
 
 GEMINI_GENERATION_CONFIG = {
-    "temperature": 0.1,  # Low temperature for factual accuracy
+    "temperature": 0.5,  # Low temperature for factual accuracy
     "top_p": 0.95,
     "top_k": 40,
     "max_output_tokens": 2048,
@@ -173,3 +178,39 @@ def _get_citation_format(language: str) -> str:
 - Cite EVERY claim using format: [Source: filename, Page X]
 - Never answer without citations
 - If information is not in documents, say "This information is not available in the provided documents." """
+
+def extract_citations(response: str) -> List[Dict[str, str]]:
+    """
+    Extract citations from the model's response.
+    
+    Args:
+        response: Model's response text
+        
+    Returns:
+        List of dictionaries containing source and page information
+    """
+    import re
+    
+    # Pattern for English citations: [Source: filename, Page X]
+    en_pattern = r'\[Source:\s*([^,]+),\s*Page\s*(\d+|unknown)\]'
+    
+    # Pattern for Thai citations: [แหล่งที่มา: filename, หน้า X]
+    th_pattern = r'\[แหล่งที่มา:\s*([^,]+),\s*หน้า\s*(\d+|unknown)\]'
+    
+    citations = []
+    
+    # Extract English citations
+    for match in re.finditer(en_pattern, response):
+        citations.append({
+            'source': match.group(1).strip(),
+            'page': match.group(2).strip()
+        })
+    
+    # Extract Thai citations
+    for match in re.finditer(th_pattern, response):
+        citations.append({
+            'source': match.group(1).strip(),
+            'page': match.group(2).strip()
+        })
+    
+    return citations

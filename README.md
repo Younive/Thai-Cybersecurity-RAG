@@ -118,33 +118,28 @@ cyber-rag-assignment/
 Sample Questions and Results from this RAG system
 
 1. What is Broken Access Control according to OWASP?  
-================================================================================
 RAG Response
-================================================================================
+___
 Broken Access Control vulnerabilities include violation of the principle of least privilege or deny by default [Source: owasp-top-10.pdf, Page 8], where access should only be granted for particular capabilities, roles, or users, but is available to anyone [Source: owasp-top-10.pdf, Page 8]. Further vulnerabilities involve bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool modifying API requests [Source: owasp-top-10.pdf, Page 8]. It also includes permitting viewing or editing someone else's account, by providing its unique identifier (insecure direct [Source: owasp-top-10.pdf, Page 8]. Elevation of privilege, such as acting as a user without being logged in or acting as an admin when logged in as a user, is also a vulnerability [Source: owasp-top-10.pdf, Page 8]. Metadata manipulation, like replaying or tampering with a JSON Web Token (JWT) access control token, a cookie, or a hidden field to elevate privileges or abusing JWT invalidation, is another form [Source: owasp-top-10.pdf, Page 8]. Finally, force browsing to authenticated pages as an unauthenticated user or to privileged pages is included as well [Source: owasp-top-10.pdf, Page 8].
 
 2. What website security controls are required by the Thailand Web Security Standard?  
-================================================================================
 RAG Response
-================================================================================
+___
 This information is not available in the provided documents. The provided documents include bibliographic references related to Thailand web security standards, but do not specify the required security controls.
 
 3. What is the difference between a Tactic and a Technique in MITRE ATT&CK?
-================================================================================
 RAG Response
-================================================================================
+___
 The basis of ATT&CK is a set of techniques and sub-techniques that represent actions adversaries perform to accomplish objectives [Source: mitre-attack-philosophy-2020.pdf, Page 16]. These objectives are represented by tactic categories [Source: mitre-attack-philosophy-2020.pdf, Page 16]. Techniques and sub-techniques are the foundation of ATT&CK and represent the individual actions adversaries take or information learned [Source: mitre-attack-philosophy-2020.pdf, Page 35]. The representation in ATT&CK balances technical detail at the technique level with context around why actions occur at the tactic level [Source: mitre-attack-philosophy-2020.pdf, Page 16].
 
 4. What mitigation steps does OWASP recommend for Injection vulnerabilities?  
-================================================================================
 RAG Response
-================================================================================
+___
 OWASP recommends several mitigation steps for injection vulnerabilities [Source: owasp-top-10.pdf, Page 15]. The preferred option is to use a safe API, which avoids using the interpreter entirely, provides a parameterized interface, or migrates to Object Relational Mapping Tools (ORMs) [Source: owasp-top-10.pdf, Page 15]. Positive server-side input validation should be used [Source: owasp-top-10.pdf, Page 15]. For any residual dynamic queries, special characters should be escaped using the specific escape syntax for that interpreter [Source: owasp-top-10.pdf, Page 15]. Using LIMIT and other SQL controls within queries can prevent mass disclosure of records in case of SQL injection [Source: owasp-top-10.pdf, Page 15]. Source code review is the best method of detecting if applications are vulnerable to injections [Source: owasp-top-10.pdf, Page 15]; automated testing of all parameters, headers, URL, cookies, JSON, SOAP, and XML data inputs is strongly encouraged [Source: owasp-top-10.pdf, Page 15].
 
 5. How does MITRE describe the purpose of Persistence techniques?
-================================================================================
 RAG Response
-================================================================================
+___
 The provided documents describe persistence techniques and give examples, but do not explicitly state the purpose of persistence techniques [Source: mitre-attack-philosophy-2020.pdf, Page 16, 17]. Therefore, this information is not available in the provided documents.
 
 ---

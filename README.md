@@ -9,7 +9,7 @@ Demo:
 * Python 3.11+
 * Google AI Studio API Key
 * UV package manager installed
-* unstructured required system level dependency install 
+* unstructured required system level dependency installed
     - Tesseract (tesseract-ocr)
     - Poppler (poppler-utils)
 

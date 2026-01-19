@@ -1,7 +1,7 @@
 # cyber-rag-assignment
 Assigment for AI Engineer position at Datafarm
 
-Demo: 
+Demo via HuggingFace: https://huggingface.co/spaces/Younive/cyber_rag_assignment_demo 
 
 ##  Getting Started
 

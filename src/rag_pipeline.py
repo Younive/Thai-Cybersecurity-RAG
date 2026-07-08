@@ -3,7 +3,7 @@ from pathlib import Path
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 from extractors.textbook import extract_textbook
 from extractors.slide_deck import extract_slide_deck
@@ -12,9 +12,10 @@ from extractors.utils.data_model import ExtractedContent, ExtractedDocument, Con
 from dotenv import load_dotenv
 import os
 
-EMBEDDING_MODEL = 'text-embedding-004'
+load_dotenv(".env.local")
 
-load_dotenv()
+EMBEDDING_MODEL = os.getenv("OPENROUTER_EMBEDDING_MODEL")
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 class RAGPipeline:
     """
@@ -25,14 +26,23 @@ class RAGPipeline:
     
     def __init__(
         self,
-        collection_name: str = "knowledge_base",
+        collection_name: str = "rag_knowledge_base",
         persist_directory: str = "./chroma_db"
     ):
         self.collection_name = collection_name
         self.persist_directory = persist_directory
         
         # ONE embedding model for ALL content
-        self.embeddings = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL, api_key=os.getenv("GOOGLE_API_KEY"))
+        # check_embedding_ctx_length=False: send raw text, skip tiktoken tokenization
+        self.embeddings = OpenAIEmbeddings(
+            model=EMBEDDING_MODEL,
+            api_key=os.getenv("OPENROUTER_API_KEY"),
+            base_url=OPENROUTER_BASE_URL,
+            check_embedding_ctx_length=False,
+            # OpenRouter embedding models return empty data for the SDK's default
+            # base64 format; force float.
+            model_kwargs={"encoding_format": "float"},
+        )
         
         print(f"Initialized RAG pipeline")
         print(f"Collection: {collection_name}")

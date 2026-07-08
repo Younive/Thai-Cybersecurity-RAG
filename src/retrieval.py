@@ -1,11 +1,11 @@
 from vectorstore.manage_vectorstore import VectorStoreManager
-from prompt_template import build_gemini_rag_prompt
-from langchain_google_genai import GoogleGenerativeAI
+from prompt_template import build_rag_prompt
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 import re
 
-load_dotenv()
+load_dotenv(".env.local")
 
 # Initialize vectorstore once
 vectorstore = VectorStoreManager().get_exist_cromadb()
@@ -56,8 +56,8 @@ def detect_language(text: str) -> str:
     
     if total_chars == 0:
         return 'en'
-    
-    thai_ratio = thai_chars / total_chars if total_chars > 0 else 0
+
+    thai_ratio = thai_chars / total_chars
     return 'th' if thai_ratio > 0.3 else 'en'
 
 
@@ -254,61 +254,6 @@ def retrieve_documents_multilingual(query: str, k: int = 5, adaptive_k: bool = T
     return [doc for doc, score in unique_results[:original_k]]
 
 
-def retrieve_with_scores(query: str, k: int = 3):
-    """
-    Retrieve relevant documents with similarity scores.
-    
-    Args:
-        query: Search query string
-        k: Number of documents to retrieve
-        
-    Returns:
-        List of tuples (Document, score)
-    """
-    results = vectorstore.similarity_search_with_score(query, k=k)
-    return results
-
-
-def retrieve_hybrid(query: str, k: int = 5, use_multilingual: bool = True):
-    """
-    Hybrid retrieval: Semantic + Multilingual expansion.
-    
-    Args:
-        query: Search query
-        k: Number of results
-        use_multilingual: Enable multilingual expansion
-        
-    Returns:
-        List of documents
-    """
-    if use_multilingual:
-        return retrieve_documents_multilingual(query, k=k)
-    else:
-        return retrieve_documents(query, k=k)
-
-
-def get_rag_prompt(query: str, k: int = 3, language: str = "auto", use_multilingual: bool = True):
-    """
-    Get complete RAG prompt ready for LLM inference.
-    
-    Args:
-        query: User's question
-        k: Number of documents to retrieve
-        language: 'en', 'th', or 'auto'
-        use_multilingual: Enable multilingual retrieval
-        
-    Returns:
-        Tuple of (prompt string, retrieved documents)
-    """
-    if use_multilingual:
-        results = retrieve_documents_multilingual(query, k=k)
-    else:
-        results = retrieve_documents(query, k=k)
-    
-    prompt = build_gemini_rag_prompt(query, results, language=language)
-    return prompt, results
-
-
 def main():
     """Test retrieval functionality with multilingual examples"""
     print("\n" + "="*80)
@@ -349,13 +294,15 @@ def main():
     print("TEST 3: Full RAG Pipeline (English Query for Thai Content)")
     print("="*80)
     test_query = 'How does MITRE describe the purpose of Persistence techniques?'
-    prompt, docs = get_rag_prompt(test_query, k=8, language="auto", use_multilingual=True)
+    docs = retrieve_documents_multilingual(test_query, k=8)
+    prompt = build_rag_prompt(test_query, docs, language="auto")
     
-    model = GoogleGenerativeAI(
-        model="gemini-2.0-flash-exp", 
-        api_key=os.getenv("GOOGLE_API_KEY")
+    model = ChatOpenAI(
+        model=os.getenv("OPENROUTER_GENERAL_MODEL"),
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        base_url="https://openrouter.ai/api/v1",
     )
-    response = model.invoke(prompt)
+    response = model.invoke(prompt).content
     
     print(f"\nQuery: {test_query}")
     print(f"Retrieved: {len(docs)} documents")

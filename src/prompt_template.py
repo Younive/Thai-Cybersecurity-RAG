@@ -1,7 +1,7 @@
 from typing import List, Dict
 from langchain_core.documents import Document
 
-GEMINI_SYSTEM_PROMPT = """You are a helpful AI assistant with access to a knowledge base of documents.
+RAG_SYSTEM_PROMPT = """You are a helpful AI assistant with access to a knowledge base of documents.
 
 CRITICAL CITATION RULES (YOU MUST FOLLOW THESE):
 1. ALWAYS cite sources for EVERY factual claim using this format: [Source: filename, Page X]
@@ -70,39 +70,19 @@ Answer: This information is not available in the provided documents. The retriev
 
 Now answer the following question using the same format:"""
 
-GEMINI_GENERATION_CONFIG = {
-    "temperature": 0.5,  # Low temperature for factual accuracy
+GENERATION_CONFIG = {
+    "temperature": 0.1,  # Low temperature for factual accuracy
     "top_p": 0.95,
-    "top_k": 40,
-    "max_output_tokens": 2048,
+    "max_tokens": 2048,  # top_k dropped: not an OpenAI/OpenRouter chat param
 }
 
-GEMINI_SAFETY_SETTINGS = [
-    {
-        "category": "HARM_CATEGORY_HARASSMENT",
-        "threshold": "BLOCK_NONE"
-    },
-    {
-        "category": "HARM_CATEGORY_HATE_SPEECH",
-        "threshold": "BLOCK_NONE"
-    },
-    {
-        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        "threshold": "BLOCK_NONE"
-    },
-    {
-        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-        "threshold": "BLOCK_NONE"
-    },
-]
-
-def build_gemini_rag_prompt(
+def build_rag_prompt(
     query: str,
     retrieved_docs: List[Document],
     language: str = "auto"
 ) -> str:
     """
-    Build a complete RAG prompt for Gemini with citation enforcement.
+    Build a complete RAG prompt for the chat model with citation enforcement.
     
     Args:
         query: User's question
@@ -125,7 +105,7 @@ def build_gemini_rag_prompt(
     citation_format = _get_citation_format(language)
     
     # Build complete prompt
-    prompt = f"""{GEMINI_SYSTEM_PROMPT}
+    prompt = f"""{RAG_SYSTEM_PROMPT}
 
 {FEW_SHOT_EXAMPLES}
 

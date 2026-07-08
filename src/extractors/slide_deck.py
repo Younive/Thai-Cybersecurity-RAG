@@ -75,11 +75,6 @@ def _filter_relevant_image_elements(elements: List[Element]) -> List[Element]:
     images = [el for el in elements if el.category == 'Image']
     
     for img in images:
-        # Skip small images (likely logos)
-        if hasattr(img.metadata, 'coordinates'):
-            # You can add size filtering here if needed
-            pass
-        
         # Skip images with excluded text
         if img.text and img.text in DEFAULT_EXCLUDED_TEXTS:
             continue

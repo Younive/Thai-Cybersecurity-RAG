@@ -208,3 +208,6 @@ __marimo__/
 
 chroma_db
 dataset/processed/
+.env.local
+eval/results/
+.claude

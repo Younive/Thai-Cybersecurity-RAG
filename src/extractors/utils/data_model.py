@@ -26,16 +26,12 @@ class ExtractedContent:
     image_base64: Optional[str] = None
     
     def __post_init__(self):
-        """Ensure required metadata fields exist"""
-        required_fields = ['source', 'page', 'doc_id']
-        for field in required_fields:
-            if field not in self.metadata:
-                # Set defaults if missing
-                if field == 'doc_id':
-                    source = self.metadata.get('source', 'unknown')
-                    self.metadata['doc_id'] = Path(source).stem if source != 'unknown' else 'unknown'
-                elif field == 'page':
-                    self.metadata['page'] = self.metadata.get('page_number', 0)
+        """Backfill page/doc_id metadata when the extractor didn't set them."""
+        if 'page' not in self.metadata:
+            self.metadata['page'] = self.metadata.get('page_number', 0)
+        if 'doc_id' not in self.metadata:
+            source = self.metadata.get('source', 'unknown')
+            self.metadata['doc_id'] = Path(source).stem if source != 'unknown' else 'unknown'
 
 
 @dataclass

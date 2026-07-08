@@ -1,10 +1,11 @@
 import os
 import shutil
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".env.local")
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 # Configuration
 CHROMA_DB_PATH = "./chroma_db"
 COLLECTION_NAME = "rag_knowledge_base"
@@ -16,20 +17,30 @@ class VectorStoreManager:
         self, 
         persist_directory: str = CHROMA_DB_PATH, 
         collection_name: str = COLLECTION_NAME,
-        embedding_model_name: str = "models/text-embedding-004"
+        embedding_model_name: str = None
     ):
         """
         Initialize VectorStoreManager.
-        
+
         Args:
             persist_directory: Path to the ChromaDB persistence directory
             collection_name: Name of the collection (must match rag_pipeline.py)
-            embedding_model_name: Name of the Google embedding model
+            embedding_model_name: OpenRouter embedding model (defaults to OPENROUTER_EMBEDDING_MODEL)
         """
+        embedding_model_name = embedding_model_name or os.getenv("OPENROUTER_EMBEDDING_MODEL")
         self.persist_directory = persist_directory
         self.collection_name = collection_name
-        # CRITICAL FIX: Initialize the embedding function as an object, not a string
-        self.embedding_function = GoogleGenerativeAIEmbeddings(model=embedding_model_name, api_key=os.getenv("GOOGLE_API_KEY"))
+        # check_embedding_ctx_length=False: send raw text, skip tiktoken tokenization
+        # (non-OpenAI models don't accept pre-tokenized integer input)
+        self.embedding_function = OpenAIEmbeddings(
+            model=embedding_model_name,
+            api_key=os.getenv("OPENROUTER_API_KEY"),
+            base_url=OPENROUTER_BASE_URL,
+            check_embedding_ctx_length=False,
+            # OpenRouter embedding models return empty data for the SDK's default
+            # base64 format; force float.
+            model_kwargs={"encoding_format": "float"},
+        )
         print(f"Initialized VectorStoreManager")
         print(f"  Collection: {collection_name}")
         print(f"  Embedding: {embedding_model_name}")
@@ -74,34 +85,6 @@ class VectorStoreManager:
         except Exception as e:
             print(f"Warning: Could not verify vector store contents: {e}")
         
-        return vectorstore
-    
-    def create_chromadb(self, documents):
-        """
-        Create a new ChromaDB vector store from documents.
-        
-        Args:
-            documents: List of documents to add to the vector store
-            
-        Returns:
-            Chroma vector store instance
-        """
-        # Delete existing vector store if it exists
-        if self.check_chromadb_exists():
-            print(f"Existing ChromaDB found. Deleting...")
-            self.delete_chromadb()
-        
-        print(f"Creating new ChromaDB at {self.persist_directory}...")
-        print(f"  Collection name: {self.collection_name}")
-        
-        vectorstore = Chroma.from_documents(
-            documents=documents,
-            embedding=self.embedding_function,
-            persist_directory=self.persist_directory,
-            collection_name=self.collection_name  # CRITICAL: Specify collection name
-        )
-        
-        print(f"ChromaDB created with {len(documents)} documents.")
         return vectorstore
     
     def delete_chromadb(self):
@@ -172,27 +155,6 @@ class VectorStoreManager:
                 "count": 0,
                 "error": str(e)
             }
-    
-    def add_documents(self, documents):
-        """
-        Add documents to existing vector store.
-        
-        Args:
-            documents: List of documents to add
-            
-        Returns:
-            Updated Chroma vector store instance
-        """
-        if not self.check_chromadb_exists():
-            print("No existing vector store found. Creating new one...")
-            return self.create_chromadb(documents)
-        
-        print(f"Adding {len(documents)} documents to existing vector store...")
-        vectorstore = self.get_exist_cromadb()
-        vectorstore.add_documents(documents)
-        print(f"Added {len(documents)} documents successfully.")
-        
-        return vectorstore
 
 if __name__ == "__main__":
     # Test the VectorStoreManager

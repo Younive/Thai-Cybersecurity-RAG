@@ -211,3 +211,6 @@ dataset/processed/
 .env.local
 eval/results/
 .claude
+CLAUDE.md
+context/
+memory.md

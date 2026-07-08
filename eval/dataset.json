@@ -1,0 +1,554 @@
+{
+  "created": "2026-07-08T13:53:32.632811+00:00",
+  "generator_model": "google/gemini-2.5-flash",
+  "seed": 42,
+  "note": "Human spot-check before use. Thai doc pages are OCR render indices, not printed page numbers. chunk_fingerprint stales if store is rebuilt.",
+  "questions": [
+    {
+      "id": "q001",
+      "question_en": "What is an example of a sub-technique that applies only to Windows systems?",
+      "question_th": "อะไรคือตัวอย่างของเทคนิคย่อยที่ใช้ได้กับระบบ Windows เท่านั้น?",
+      "answer_en": "Rundll32 is an example of a sub-technique that only applies to Windows systems.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 36,
+        "chunk_fingerprint": "Sub-techniques generally are specific ways an adversary acts against either against a particular pla",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Sub-techniques generally are specific ways an adversary acts against either against a particular platform or by using a similar concept that works similarly across platforms. Rundll32 is one example of the former that only applies to Windows systems. These sub-techniques tend to describe how individ"
+    },
+    {
+      "id": "q002",
+      "question_en": "What are the two CVSS sub-scores used to calculate 'Weighted Exploit' and 'Weighted Impact'?",
+      "question_th": "คะแนนย่อย CVSS สองรายการที่ใช้ในการคำนวณ 'Weighted Exploit' และ 'Weighted Impact' คืออะไร?",
+      "answer_en": "The 'Exploit' sub-score and the 'Impact' sub-score from CVSSv2 and CVSSv3 scores are used.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 5,
+        "chunk_fingerprint": "Data Factors\nData factors are listed for each of the Top 10 categories:\n• CWEs Mapped: The number of",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Data Factors\nData factors are listed for each of the Top 10 categories:\n• CWEs Mapped: The number of CWEs mapped to a category by the Top 10 team\n• Incidence Rate: The percentage of applications vulnerable to that CWE from the population tested by that organization for that year\n• Weighted Exploit: "
+    },
+    {
+      "id": "q003",
+      "question_en": "What are the three main components of a website mentioned in the document, excluding Reverse Proxy?",
+      "question_th": "ส่วนประกอบหลักสามส่วนของเว็บไซต์ที่กล่าวถึงในเอกสารนี้ ยกเว้น Reverse Proxy มีอะไรบ้าง?",
+      "answer_en": "The three main components are Front End, Back End, and Database.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 34,
+        "chunk_fingerprint": "-๓๑ -\n๑) ส่วนหน้า (5๐ก1 End) เป็นส่วนที่ผู้ใช้งานสามารถเห็นและปฏิสัมพันธ์กับเว็บไซต์ได้\nซึ่งประกอบด้",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "-๓๑ -\n๑) ส่วนหน้า (5๐ก1 End) เป็นส่วนที่ผู้ใช้งานสามารถเห็นและปฏิสัมพันธ์กับเว็บไซต์ได้\nซึ่งประกอบด้วย องค์ประกอบที่แสดงผลบนหน้าจอของผู้ใช้ wu หน้า HTML CSS และ JavaScript\n๒) ส่วนหลัง (Back End) เป็นส่วนที่ดูแลการประมวลผลและการจัดการข้อมูลของเว็บไซต์\nโดยทำหน้าที่รับคำขอจากส่วนหน้า เพื่อการประมวลผล แ"
+    },
+    {
+      "id": "q004",
+      "question_en": "What is the purpose of a defensive gap assessment?",
+      "question_th": "วัตถุประสงค์ของการประเมินช่องว่างด้านการป้องกันคืออะไร?",
+      "answer_en": "A defensive gap assessment allows an organization to determine what parts of its enterprise lack defenses and/or visibility.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 13,
+        "chunk_fingerprint": "Defensive Gap Assessment – A defensive gap assessment allows an organization to determine what parts",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Defensive Gap Assessment – A defensive gap assessment allows an organization to determine what parts of its enterprise lack defenses and/or visibility. These gaps represent blind spots for potential vectors that allow an adversary to gain access to its networks undetected or unmitigated."
+    },
+    {
+      "id": "q005",
+      "question_en": "How many of the OWASP Top 10 categories are derived from community survey data?",
+      "question_th": "หมวดหมู่ OWASP Top 10 จำนวนเท่าใดที่มาจากข้อมูลการสำรวจของชุมชน?",
+      "answer_en": "Two of the categories come from the Top 10 community survey.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 4,
+        "chunk_fingerprint": "Understanding the Top 10\n• The 10 Categories\n8 of 10 categories are contributed data\n2 of the catego",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Understanding the Top 10\n• The 10 Categories\n8 of 10 categories are contributed data\n2 of the categories come from the Top 10 community survey\n• These two categories reflect what AppSec researchers see as the highest risks that may not be in the data (and may never be expressed in data)\n• Common Wea"
+    },
+    {
+      "id": "q006",
+      "question_en": "What is the purpose of understanding the organization's mission according to Table A1 in the context of organizational context operations?",
+      "question_th": "ตามตาราง ก1 ในส่วนของการดำเนินการในบริบทองค์กร การทำความเข้าใจภารกิจของหน่วยงานมีวัตถุประสงค์เพื่ออะไร?",
+      "answer_en": "The purpose is to use it as a basis for identifying risks that could affect the organization's mission.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 19,
+        "chunk_fingerprint": "- ๑๒๐ -\nภาคผนวกก\nรายละเอียดข้อเสนอแนะและคำอธิบายเพิมเติม\n(ข้อ ๑\n(เป็นข้อมูลเพิ่มเติม)\nข้อ ๕.๑ ตัวอย่",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "- ๑๒๐ -\nภาคผนวกก\nรายละเอียดข้อเสนอแนะและคำอธิบายเพิมเติม\n(ข้อ ๑\n(เป็นข้อมูลเพิ่มเติม)\nข้อ ๕.๑ ตัวอย่างในการดำเนินการในส่วนบริบทขององค์กร\nการดำเนินการในส่วนบริบทองค์กรในหัวข้อการสำรวจบริบทของหน่วยงาน (Organization\nContext) ตามข้อกำหนดในการกำกับดูแลด้านความมั่นคงปลอดภัยสำหรับเว็บไซต์ (Website\nSecurity"
+    },
+    {
+      "id": "q007",
+      "question_en": "What was the initial purpose of the project that led to MITRE ATT&CK?",
+      "question_th": "วัตถุประสงค์เริ่มต้นของโครงการที่นำไปสู่ MITRE ATT&CK คืออะไร?",
+      "answer_en": "The project originated to document and categorize post-compromise adversary tactics, techniques, and procedures (TTPs) against Microsoft Windows systems to improve detection of malicious behavior.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 11,
+        "chunk_fingerprint": "MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the vari",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "MITRE ATT&CK is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s attack lifecycle and the platforms they are known to target. ATT&CK focuses on how external adversaries compromise and operate within computer information networks. It ori"
+    },
+    {
+      "id": "q008",
+      "question_en": "Where is access control only effective?",
+      "question_th": "การควบคุมการเข้าถึงจะมีประสิทธิภาพก็ต่อเมื่ออยู่ที่ใด?",
+      "answer_en": "Access control is only effective in trusted server-side code or server-less application programming interface (API).",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 9,
+        "chunk_fingerprint": "Broken Access Control Prevention\n• Access control is only effective in trusted server-side code or s",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Broken Access Control Prevention\n• Access control is only effective in trusted server-side code or server-less application programming interface (API), where the attacker cannot modify the access control check or metadata.\n• Implement access control mechanisms once, and re-use them throughout the ap"
+    },
+    {
+      "id": "q009",
+      "question_en": "What specific types of attacks are mentioned as being detectable and preventable by Web Application Firewalls (WAFs) in the provided text?",
+      "question_th": "การโจมตีประเภทใดบ้างที่ระบุไว้ในข้อความว่าสามารถตรวจจับและป้องกันได้ด้วย Web Application Firewall (WAF)?",
+      "answer_en": "The text mentions SQL Injection, XSS (Cross-Site Scripting), and CSRF (Cross-Site Request Forgery) as types of attacks detectable and preventable by WAFs.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 35,
+        "chunk_fingerprint": "ในการตรวจจับ และป้องกันการโจมติต่าง ๆ ที่เป็นที่รู้จัก เช่น การโจมตีแบบ SQL Injection การโจมติ\nแบบ X",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "ในการตรวจจับ และป้องกันการโจมติต่าง ๆ ที่เป็นที่รู้จัก เช่น การโจมตีแบบ SQL Injection การโจมติ\nแบบ XSS การโจมตีแบบ CSRF และอื่น ๆ โดยการเปรียบเทียบข้อมูลที่ส่งผ่านมากับกฎหรือรูปแบบ\nที่เป็นไปได้ของการโจมตี และบล็อกหรือจำกัดการเข้าถึงข้อมูลที่มีความเสี่ยง ดังนั้น การใช้บริการป้องกัน\nWeb Application (W"
+    },
+    {
+      "id": "q010",
+      "question_en": "Where is information about ungrouped or unnamed adversarial activity typically included within a technique's description?",
+      "question_th": "ข้อมูลเกี่ยวกับกิจกรรมของฝ่ายตรงข้ามที่ไม่ได้จัดกลุ่มหรือไม่ระบุชื่อมักจะถูกรวมไว้ที่ใดในการอธิบายเทคนิค?",
+      "answer_en": "It is typically included as a reference within the technical section of a technique describing instances of how the technique may be used.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 40,
+        "chunk_fingerprint": "Reports often include adversarial behavior and technique use for ungrouped or unnamed activity. This",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Reports often include adversarial behavior and technique use for ungrouped or unnamed activity. This is still a very useful source of information. Just because activity is not correlated to a named group does not mean it should not be included as justification for a technique or enhancing informatio"
+    },
+    {
+      "id": "q011",
+      "question_en": "What is the specific CWE related to the generation of error messages containing sensitive information?",
+      "question_th": "CWE ที่เกี่ยวข้องกับการสร้างข้อความแสดงข้อผิดพลาดที่มีข้อมูลที่ละเอียดอ่อนคืออะไร?",
+      "answer_en": "CWE-209: Generation of Error Message Containing Sensitive Information",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 16,
+        "chunk_fingerprint": "A04:2021 – Insecure Design\nExample Scenario:\nNotable Common Weakness Enumerations (CWEs):\nA movie th",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "A04:2021 – Insecure Design\nExample Scenario:\nNotable Common Weakness Enumerations (CWEs):\nA movie theater chain that allows group booking discounts requires a deposit for groups of more than fifteen people. Attackers threat model this flow to see if they can book hundreds of seats across various the"
+    },
+    {
+      "id": "q012",
+      "question_en": "What is an example of a domain name used in the provided text?",
+      "question_th": "ตัวอย่างชื่อโดเมนที่ใช้ในข้อความที่ให้มาคืออะไร?",
+      "answer_en": "An example of a domain name used is ncsa.or.th.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 45,
+        "chunk_fingerprint": "- ๕๒ -\nได้จากความถี่ของการปรับเวอร์ชันหรือปรับปรุงระบบบริหารจัดการเว็บไซต์ CMS เพื่อแก้ไขช่องโหว่\nหร",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "- ๕๒ -\nได้จากความถี่ของการปรับเวอร์ชันหรือปรับปรุงระบบบริหารจัดการเว็บไซต์ CMS เพื่อแก้ไขช่องโหว่\nหรือระยะเวลาใช้ในการพัฒนาตัวปรับรุ่น (ล1๓7)\n๓) พิจารณาจากแหล่งข้อมูลที่เกี่ยวกับการติดตั้ง การตั้งค่า และแนวทางการรักษา\nความมั่นคงปลอดภัยของระบบบริหารจัดการเว็บไซต์ CMS ที่ดี จะมีแหล่งข้อมูลและเอกสารสนั"
+    },
+    {
+      "id": "q013",
+      "question_en": "What does a technique represent in terms of an adversary's actions and objectives?",
+      "question_th": "เทคนิคแสดงถึงอะไรในแง่ของการกระทำและวัตถุประสงค์ของฝ่ายตรงข้าม?",
+      "answer_en": "Techniques represent \"how\" an adversary achieves a tactical objective by performing an action, and also \"what\" an adversary gains by performing an action.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 19,
+        "chunk_fingerprint": "Techniques represent “how” an adversary achieves a tactical objective by performing an action. For e",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Techniques represent “how” an adversary achieves a tactical objective by performing an action. For example, an adversary may dump credentials from an operating system to gain access to useful credentials within a network. Techniques may also represent “what” an adversary gains by performing an actio"
+    },
+    {
+      "id": "q014",
+      "question_en": "What is an example of a deprecated cryptographic padding method mentioned in the text?",
+      "question_th": "ตัวอย่างของวิธีการเติมช่องว่างการเข้ารหัสที่เลิกใช้แล้วที่กล่าวถึงในข้อความคืออะไร?",
+      "answer_en": "Public key cryptography standard (PKCS) number 1 v1.5.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 11,
+        "chunk_fingerprint": "Cryptographic Failure Vulnerabilities\n• Data is transmitted in clear text.\n• Use of default crypto k",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Cryptographic Failure Vulnerabilities\n• Data is transmitted in clear text.\n• Use of default crypto keys, weak crypto keys are generated or re-used, or a proper key management or rotation is missing.\n• Encryption is not enforced, e.g., any HTTP headers (browser) security directives or headers are mis"
+    },
+    {
+      "id": "q015",
+      "question_en": "What are two examples of measures for maintaining data integrity mentioned in the document?",
+      "question_th": "มาตรการสองตัวอย่างที่กล่าวถึงในเอกสารสำหรับการรักษาความครบถ้วนสมบูรณ์ของข้อมูลคืออะไร?",
+      "answer_en": "Message Authentication Code (MAC) and digital signatures.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 23,
+        "chunk_fingerprint": "ข้อมูลภายในหน่วยงาน หรือข้อมูลผลิตภัณฑ์ ควรจะมีมาตรการควบคุมการรักษาความลับที่เหมาะสม\nเช่น การเข้ารห",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "ข้อมูลภายในหน่วยงาน หรือข้อมูลผลิตภัณฑ์ ควรจะมีมาตรการควบคุมการรักษาความลับที่เหมาะสม\nเช่น การเข้ารหัสและการควบคุมการเข้าถึง ทั้งระหว่างการจัดเก็บ (Data-at-rest) การส่งต่อ\n(Data-in-transit) และการใช้งาน (Data-in-use) โดยหน่วยงานควรจะพิจารณาถึงมาตรฐาน\nการเข้ารหัสของแต่ละข้อมูลจะมีการเข้ารหัสมาตรฐานไม"
+    },
+    {
+      "id": "q016",
+      "question_en": "What does PRE-ATT&CK cover in terms of adversarial behavior?",
+      "question_th": "PRE-ATT&CK ครอบคลุมพฤติกรรมของฝ่ายตรงข้ามในด้านใดบ้าง?",
+      "answer_en": "PRE-ATT&CK covers documentation of adversarial behavior during requirements gathering, reconnaissance, and weaponization before access to a network is obtained.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 18,
+        "chunk_fingerprint": "The scope of ATT&CK also expands beyond technology domains with PRE-ATT&CK. PRE- ATT&CK covers docum",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "The scope of ATT&CK also expands beyond technology domains with PRE-ATT&CK. PRE- ATT&CK covers documentation of adversarial behavior during requirements gathering, reconnaissance, and weaponization before access to a network is obtained. It is independent of technology and models an adversary’s beha"
+    },
+    {
+      "id": "q017",
+      "question_en": "What are some examples of unnecessary features that, if enabled or installed, could contribute to secure misconfiguration vulnerabilities?",
+      "question_th": "ตัวอย่างของคุณสมบัติที่ไม่จำเป็นที่หากเปิดใช้งานหรือติดตั้ง อาจทำให้เกิดช่องโหว่จากการกำหนดค่าที่ไม่ปลอดภัยมีอะไรบ้าง?",
+      "answer_en": "Unnecessary ports, services, pages, accounts, or privileges are examples of unnecessary features that could contribute to secure misconfiguration vulnerabilities if enabled or installed.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 19,
+        "chunk_fingerprint": "Secure Misconfiguration Vulnerabilities\n• Missing appropriate security hardening across any part of ",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Secure Misconfiguration Vulnerabilities\n• Missing appropriate security hardening across any part of the application stack or improperly configured permissions on cloud services.\n• Unnecessary features are enabled or installed (e.g., unnecessary ports, services, pages, accounts, or privileges).\n• Def"
+    },
+    {
+      "id": "q018",
+      "question_en": "What principle should agencies consider using for secure web application development, from development to actual use?",
+      "question_th": "หน่วยงานควรพิจารณาใช้หลักการใดในการพัฒนาโปรแกรมประยุกต์บนเว็บอย่างมั่นคงปลอดภัย ตั้งแต่ขั้นตอนการพัฒนาจนถึงการใช้งานจริง?",
+      "answer_en": "Agencies should consider using the DevSecOps principle.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 64,
+        "chunk_fingerprint": "- 310) -\nเต้ากาทัษาครมหอตักร I I\nด้านการรักษาความมั่นคงปลอดภัยไซเบอร์\n(หัวข้อ ๒.๒)\n๕.๑ I หน่วยงานจะต",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "- 310) -\nเต้ากาทัษาครมหอตักร I I\nด้านการรักษาความมั่นคงปลอดภัยไซเบอร์\n(หัวข้อ ๒.๒)\n๕.๑ I หน่วยงานจะต้องกำหนดแนวทางในการพัฒนาโปรแกรม I] ยังต้องปรับปรุง\nประยุกต์บนเว็บ (Web Application) อย่างมั่นคง [ ] ดำเนินการแล้ว\nปลอดภัย wu พิจารณาใช้หลักการ DevSecOps ตั้งแต่\nขั้นตอนการพัฒนาจนถึงการใช้งานจริงโดยมีก"
+    },
+    {
+      "id": "q019",
+      "question_en": "What are some examples of techniques listed under the Persistence tactic in the ATT&CK Matrix?",
+      "question_th": "ตัวอย่างเทคนิคที่ระบุภายใต้กลยุทธ์ Persistence ใน ATT&CK Matrix มีอะไรบ้าง?",
+      "answer_en": "Examples of techniques under the Persistence tactic include Hijack Execution Flow, Pre-OS Boot, and Scheduled Task/Job.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 16,
+        "chunk_fingerprint": "The relationship between tactics, techniques, and sub-techniques can be visualized in the ATT&CK Mat",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "The relationship between tactics, techniques, and sub-techniques can be visualized in the ATT&CK Matrix. For example, under the Persistence tactic (this is the adversary’s goal – to persist in the target environment), there are a series of techniques including Hijack Execution Flow, Pre-OS Boot, and"
+    },
+    {
+      "id": "q020",
+      "question_en": "What types of components are included when considering unknown versions of components?",
+      "question_th": "เมื่อพิจารณาเวอร์ชันที่ไม่รู้จักของส่วนประกอบ ส่วนประกอบประเภทใดบ้างที่รวมอยู่ด้วย?",
+      "answer_en": "Both client-side and server-side components, including directly used components and nested dependencies.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 22,
+        "chunk_fingerprint": "Vulnerable and Outdated Components Vulnerabilities\n• Versions of components you use (both client-sid",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Vulnerable and Outdated Components Vulnerabilities\n• Versions of components you use (both client-side and server-side) are unknown. This includes components you directly use as well as nested dependencies.\n• Software is vulnerable, unsupported, or out of date. This includes the OS, web/application s"
+    },
+    {
+      "id": "q021",
+      "question_en": "How often should a Website Security Exercise be conducted according to the document?",
+      "question_th": "ตามเอกสารนี้ การฝึกซ้อมความมั่นคงปลอดภัยไซเบอร์สำหรับเว็บไซต์ควรจัดขึ้นบ่อยแค่ไหน?",
+      "answer_en": "At least once a year.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 70,
+        "chunk_fingerprint": "wo oa ๓ ¢ [ ไอยู่ในระหว่างดำเนินการ\nปรับปรุง แผนการรับมือภัยคุกคามทางไซเบอร์ Iไลฮงไม่ได้ดำเฉินการ\nขอ",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "wo oa ๓ ¢ [ ไอยู่ในระหว่างดำเนินการ\nปรับปรุง แผนการรับมือภัยคุกคามทางไซเบอร์ Iไลฮงไม่ได้ดำเฉินการ\nของเว็บไซต์ และมีการฝึกซ้อมความมันคง\nปลอดภัยไซเบอร์สำหรับเว็บไซต์ (Website\nSecurity Exercise) โดยพิจารณาฝึกซ้อม\nอย่างน้อยปีละ ๑ asa ให้เป็นไปตาม\nความเหมาะสม ให้เป็นไปตามประมวลแนวทาง\nปฏิบัติและกรอบมาตรฐา"
+    },
+    {
+      "id": "q022",
+      "question_en": "What types of information are included in cyber threat intelligence, according to this text?",
+      "question_th": "ตามข้อความนี้ ข้อมูลประเภทใดบ้างที่รวมอยู่ในข่าวกรองภัยคุกคามทางไซเบอร์?",
+      "answer_en": "Cyber threat intelligence includes information about malware, tools, TTPs, tradecraft, behavior, and other indicators that are associated with threats.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 14,
+        "chunk_fingerprint": "Cyber Threat Intelligence Enrichment – Cyber threat intelligence covers knowledge of cyber threats a",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Cyber Threat Intelligence Enrichment – Cyber threat intelligence covers knowledge of cyber threats and threat actor groups that impact cybersecurity. It includes information about malware, tools, TTPs, tradecraft, behavior, and other indicators that are associated to threats."
+    },
+    {
+      "id": "q023",
+      "question_en": "What is the primary purpose of the Open Web Application Security Project (OWASP) as a nonprofit foundation?",
+      "question_th": "วัตถุประสงค์หลักของ Open Web Application Security Project (OWASP) ในฐานะมูลนิธิที่ไม่แสวงหาผลกำไรคืออะไร?",
+      "answer_en": "The Open Web Application Security Project (OWASP) is a nonprofit foundation dedicated to improving software security.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 3,
+        "chunk_fingerprint": "OWASP and the OWASP Top 10\n• Threat Brief: Web Application Attacks in Healthcare\n• Open Web Applicat",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "OWASP and the OWASP Top 10\n• Threat Brief: Web Application Attacks in Healthcare\n• Open Web Application Security Project (OWASP)\nNonprofit foundation dedicated to improving software security\nOperates under an “open community” model, meaning that anyone can participate in and contribute to OWASP-rela"
+    },
+    {
+      "id": "q024",
+      "question_en": "What is the official name of the announcement issued by the National Cyber Security Committee?",
+      "question_th": "ประกาศที่ออกโดยคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติมีชื่ออย่างเป็นทางการว่าอะไร?",
+      "answer_en": "The official name is \"ประกาศคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ เรื่อง มาตรฐานการรักษาความมั่นคงปลอดภัยสำหรับเว็บไซต์ พ.ศ. ๒๕๒๕\" (Announcement of the National Cyber Security Committee Re: Cyber Security Standards for Websites B.E. 2525).",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 1,
+        "chunk_fingerprint": "การรักษาความมั้นคงปลอดภัยไซเบอร์ we. ๒๕๒๒ ประกอบกับมติคณะกรรมการบริหารสำนักงาน\nคณะกรรมการการรักษาควา",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "การรักษาความมั้นคงปลอดภัยไซเบอร์ we. ๒๕๒๒ ประกอบกับมติคณะกรรมการบริหารสำนักงาน\nคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์ ในคราวการประชุมครั้งที่ ๒/๒๕๒๕ เมื่อวันที่\n๕ พฤศจิกายน ๒๕๒๕ มติคณะกรรมการการรักษาความมันคงปลอดภัยไซเบอร์แห่งชาติ\nในคราวการประชุมครั้งที่ ๕/๒๕๒๒ เมื่อวันที่ ๒๐ พฤศจิกายน ๒๕๒๒ และม"
+    },
+    {
+      "id": "q025",
+      "question_en": "What is an example of analytic development that can be used as a starting point for organizations to develop behavioral analytics based on ATT&CK?",
+      "question_th": "อะไรคือตัวอย่างของการพัฒนาการวิเคราะห์ที่สามารถใช้เป็นจุดเริ่มต้นสำหรับองค์กรในการพัฒนาการวิเคราะห์พฤติกรรมโดยอิงจาก ATT&CK?",
+      "answer_en": "The Cyber Analytics Repository (CAR) is an example of analytic development that can be used as a starting point for organizations to develop behavioral analytics based on ATT&CK.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 13,
+        "chunk_fingerprint": "ATT&CK can be used as a tool to construct and test behavioral analytics to detect adversarial behavi",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "ATT&CK can be used as a tool to construct and test behavioral analytics to detect adversarial behavior within an environment. The Cyber Analytics Repository1 (CAR) is one example of analytic development that could be used as a starting point for an organization to develop behavioral analytics based "
+    },
+    {
+      "id": "q026",
+      "question_en": "What is one recommended practice for preventing security misconfiguration related to development, QA, and production environments?",
+      "question_th": "แนวทางปฏิบัติที่แนะนำสำหรับการป้องกันการกำหนดค่าความปลอดภัยที่ผิดพลาดที่เกี่ยวข้องกับสภาพแวดล้อมการพัฒนา, QA และการผลิตคืออะไร?",
+      "answer_en": "Development, QA, and production environments should all be configured identically, with different credentials used in each environment.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 20,
+        "chunk_fingerprint": "Security Misconfiguration Prevention\n• Development, QA, and production environments should all be co",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Security Misconfiguration Prevention\n• Development, QA, and production environments should all be configured identically, with different credentials used in each environment.\n• A minimal platform without any unnecessary features, components, documentation, and samples; remove or do not install unuse"
+    },
+    {
+      "id": "q027",
+      "question_en": "Which three fundamental security attributes should agencies adhere to for basic security guidelines?",
+      "question_th": "หน่วยงานควรปฏิบัติตามคุณลักษณะด้านความมั่นคงปลอดภัยพื้นฐาน 3 ด้านใดบ้างสำหรับแนวทางด้านความมั่นคงปลอดภัยระดับพื้นฐาน?",
+      "answer_en": "The three fundamental security attributes are Confidentiality, Integrity, and Availability.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 59,
+        "chunk_fingerprint": "ต้องการในการจัดทำเว็บไซต์ ด้านฟังก์ชัน [ ] คำเนินการแล้ว\nด้านประสิทธิภาพ และที่สำคัญความต้องการ\nด้าน",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "ต้องการในการจัดทำเว็บไซต์ ด้านฟังก์ชัน [ ] คำเนินการแล้ว\nด้านประสิทธิภาพ และที่สำคัญความต้องการ\nด้านความมั่นคงปลอดภัย โดยหน่วยงานควรจะมีการ\nวางแผนกำหนดความต้องการด้านความมั่นคงปลอดภัย\nของเว็บไซต์ โดยพิจารณาให้เป็นไปตามข้อเสนอแนะและ\nคำอธิบายเพิ่มเติมของมาตรฐานฉบับนี้ (หัวข้อ ๕.๕.๑)\n๒.๑ I หน่วยงานจะต้"
+    },
+    {
+      "id": "q028",
+      "question_en": "What are some examples of components that might be needed to use a technique or sub-technique, or are affected by its use?",
+      "question_th": "ตัวอย่างของส่วนประกอบที่อาจจำเป็นต้องใช้เทคนิคหรือเทคนิคย่อย หรือได้รับผลกระทบจากการใช้เทคนิคเหล่านั้นมีอะไรบ้าง?",
+      "answer_en": "Examples of components include files, locations, registry changes, API calls, and permissions.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 37,
+        "chunk_fingerprint": "• Requirements- The components that are needed to use a technique or sub-technique, or are affected ",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "• Requirements- The components that are needed to use a technique or sub-technique, or are affected by use of a technique. For example, files, locations, registry changes, API calls, permissions, etc. What is the overlap of components between the techniques? Are they distinct or similar?"
+    },
+    {
+      "id": "q029",
+      "question_en": "What is one example scenario provided for A02:2021 – Cryptographic Failures?",
+      "question_th": "ตัวอย่างสถานการณ์หนึ่งที่ให้ไว้สำหรับ A02:2021 – Cryptographic Failures คืออะไร?",
+      "answer_en": "An application encrypts credit card numbers in a database using automatic database encryption, but this data is automatically decrypted when retrieved, allowing a structured query language (SQL) injection flaw to retrieve credit card numbers in clear text.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 10,
+        "chunk_fingerprint": "A02:2021 – Cryptographic Failures\nExample Scenario:\nAn application encrypts credit card numbers in a",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "A02:2021 – Cryptographic Failures\nExample Scenario:\nAn application encrypts credit card numbers in a database using automatic database encryption, but this data is automatically decrypted when retrieved, allowing a structured query language (SQL) injection flaw to retrieve credit card numbers in cle"
+    },
+    {
+      "id": "q030",
+      "question_en": "What action should agencies consider regarding external service providers to ensure cybersecurity compliance for websites?",
+      "question_th": "หน่วยงานควรพิจารณาดำเนินการอย่างไรกับผู้ให้บริการภายนอกเพื่อให้มั่นใจว่าสอดคล้องกับข้อกำหนดด้านความมั่นคงปลอดภัยไซเบอร์สำหรับเว็บไซต์?",
+      "answer_en": "Agencies should consider establishing a process to verify the compliance of external service providers with cybersecurity requirements for websites as stipulated in their contracts.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 63,
+        "chunk_fingerprint": "หน่วยงานควรจะพิจารณาสร้างกระบวนการ เI[โดำเนินการแล้ว\n๑7 ย ๑ [ ไอยู่ในระหว่างดำเนินการ\nตรวจสอบความถูก",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "หน่วยงานควรจะพิจารณาสร้างกระบวนการ เI[โดำเนินการแล้ว\n๑7 ย ๑ [ ไอยู่ในระหว่างดำเนินการ\nตรวจสอบความถูกต้องของผู้ให้บริการ nee\nข ข [ ]ยังไม่ได้ดำเนินการ\nภายนอกว่าสอดคล้องกับข้อกำหนดด้านความ\nมันคงปลอดภัยไซเบอร์สำหรับเว็บไซต์ใน\nเงื่อนไขของสัญญา และควรจะพิจารณา\nดำเนินการเจรจาต่อรองเงื่อนไขของสัญญาจ้าง\nให้"
+    },
+    {
+      "id": "q031",
+      "question_en": "What specific limitation do malware databases typically have regarding the use of malware?",
+      "question_th": "ฐานข้อมูลมัลแวร์มักมีข้อจำกัดเฉพาะใดบ้างเกี่ยวกับการใช้งานมัลแวร์?",
+      "answer_en": "Malware databases typically lack context around how the malware is used and by whom.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 33,
+        "chunk_fingerprint": "circumstances in which they could or should be used as well as from the difficulty of using them. Si",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "circumstances in which they could or should be used as well as from the difficulty of using them. Similarly, malware databases also exist but typically lack context around how the malware is used and by whom. They also do not take into account how legitimate software can be used for malicious purpos"
+    },
+    {
+      "id": "q032",
+      "question_en": "What type of automated attack is permitted when an attacker has a list of valid usernames and passwords?",
+      "question_th": "การโจมตีอัตโนมัติประเภทใดที่อนุญาตให้เกิดขึ้นได้เมื่อผู้โจมตีมีรายการชื่อผู้ใช้และรหัสผ่านที่ถูกต้อง?",
+      "answer_en": "Credential stuffing.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 25,
+        "chunk_fingerprint": "Identification and Authentication Failures and\n• Permits automated attacks such as credential stuffi",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Identification and Authentication Failures and\n• Permits automated attacks such as credential stuffing, where the attacker has a list of valid usernames and passwords.\n• Permits brute force or other automated attacks.\n• Uses weak or ineffective credential recovery and forgot-password processes, such"
+    },
+    {
+      "id": "q033",
+      "question_en": "What specific appendix in the standard provides additional recommendations and details regarding the OWASP Foundation's common findings in web application development?",
+      "question_th": "ภาคผนวกใดในมาตรฐานที่ให้คำแนะนำและรายละเอียดเพิ่มเติมเกี่ยวกับสิ่งที่มูลนิธิ OWASP พบได้บ่อยในการพัฒนาโปรแกรมประยุกต์บนเว็บ?",
+      "answer_en": "Appendix B provides additional recommendations and details.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 14,
+        "chunk_fingerprint": "ที่พบได้บ่อย ของมูลนิธิ OWASP (๓๒) ในการพัฒนาโปรแกรมประยุกต์บนเว็บ (Web Application)\nซึ่งมาตรฐานฉบับ",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "ที่พบได้บ่อย ของมูลนิธิ OWASP (๓๒) ในการพัฒนาโปรแกรมประยุกต์บนเว็บ (Web Application)\nซึ่งมาตรฐานฉบับนี้มีข้อเสนอแนะและรายละเอียดเพิ่มเติมตามภาคผนวก ข\n๒.๒.๓. หน่วยงานจะต้องพิจารณาการออกแบบสถาปัตยกรรมเว็บไซต์อย่างมันคง\nปลอดภัย ในส่วนของโครงสร้างของเว็บไซต์หรือโปรแกรมประยุกต์บนเว็บ โดยอาจจะมีส่วนประกอบ"
+    },
+    {
+      "id": "q034",
+      "question_en": "What are two ways ATT&CK can be utilized according to this excerpt?",
+      "question_th": "ตามข้อความนี้ ATT&CK สามารถนำไปใช้ประโยชน์ได้อย่างไรสองวิธี?",
+      "answer_en": "ATT&CK can be used to create red team plans and organize operations to avoid defensive measures, and as a research roadmap to develop new ways of performing actions that may not be detected by common defenses.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 13,
+        "chunk_fingerprint": "ATT&CK can be used as a tool to create red team plans and organize operations to avoid certain defen",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "ATT&CK can be used as a tool to create red team plans and organize operations to avoid certain defensive measures that may be in place within a network. It can also be used as a research roadmap to develop new ways of performing actions that may not be detected by common defenses."
+    },
+    {
+      "id": "q035",
+      "question_en": "What specific tools are mentioned for continuously inventorying the versions of client-side and server-side components?",
+      "question_th": "เครื่องมือเฉพาะใดบ้างที่ถูกกล่าวถึงสำหรับการตรวจสอบเวอร์ชันของส่วนประกอบฝั่งไคลเอ็นต์และฝั่งเซิร์ฟเวอร์อย่างต่อเนื่อง?",
+      "answer_en": "Tools mentioned for continuously inventorying component versions include versions, OWASP Dependency Check, and retire.js.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 23,
+        "chunk_fingerprint": "Vulnerable and Outdated Components Prevention\n• Remove unused dependencies, unnecessary features, co",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Vulnerable and Outdated Components Prevention\n• Remove unused dependencies, unnecessary features, components, files, and documentation.\n• Continuously inventory the versions of both client-side and server-side components (e.g., frameworks, libraries) and their dependencies using tools like versions,"
+    },
+    {
+      "id": "q036",
+      "question_en": "What is the highest impact category mentioned in the evaluation results section?",
+      "question_th": "หมวดหมู่ผลกระทบสูงสุดที่กล่าวถึงในส่วนผลการประเมินคืออะไร?",
+      "answer_en": "Gas",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 53,
+        "chunk_fingerprint": "ทรัพย์สิน หรือความเสียหายอื่นใด I อันตรายต่อชีวิต ร่างกาย I อาจได้รับอันตรายต่อชีวิต\nอย่างร้ายแรงมาก",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "ทรัพย์สิน หรือความเสียหายอื่นใด I อันตรายต่อชีวิต ร่างกาย I อาจได้รับอันตรายต่อชีวิต\nอย่างร้ายแรงมาก หรือ อนามัย ทรัพย์สิน ร่างกาย อนามัย ทรัพย์สิน\nอาจเปิดเผยข้อมูลลับที่ถูกกำหนด หรือความเสียหายอื่นใด หรือความเสียหายอื่นใดอย่าง\nขั้นความลับเป็นชั้นลับที่สุด อย่างร้ายแรงมาก ร้ายแรงมาก\nผลการประเมิน (นำ"
+    },
+    {
+      "id": "q037",
+      "question_en": "What specific types of attacks are covered by techniques in the Impact tactic, according to the excerpt?",
+      "question_th": "ตามข้อความที่ตัดตอนมา เทคนิคในกลยุทธ์ Impact ครอบคลุมการโจมตีประเภทใดบ้างโดยเฉพาะ?",
+      "answer_en": "Techniques in the Impact tactic specifically involve only attacks impacting the integrity or availability of information or systems.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 34,
+        "chunk_fingerprint": "Rather than include all possible types of behaviors not covered elsewhere in ATT&CK, techniques in t",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Rather than include all possible types of behaviors not covered elsewhere in ATT&CK, techniques in the Impact tactic specifically involve only attacks impacting the integrity or availability of information or systems. Along with the other tactics in ATT&CK, this increases the scope of ATT&CK to cove"
+    },
+    {
+      "id": "q038",
+      "question_en": "What are the recommended actions for session identifiers after login?",
+      "question_th": "มีการดำเนินการใดบ้างที่แนะนำสำหรับตัวระบุเซสชันหลังจากเข้าสู่ระบบ?",
+      "answer_en": "After login, session identifiers should be new, random, have high entropy, not be in the URL, be securely stored, and invalidated after logout, idle, and absolute timeouts.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 26,
+        "chunk_fingerprint": "• Limit or increasingly delay failed login attempts but be careful not to create a denial-of-service",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "• Limit or increasingly delay failed login attempts but be careful not to create a denial-of-service scenario. Log all failures and alert administrators when credential stuffing, brute force, or other attacks are detected.\n• Use a server-side, secure, built-in session manager that generates a new ra"
+    },
+    {
+      "id": "q039",
+      "question_en": "What is an example of a security device used for protection mentioned in the excerpt?",
+      "question_th": "ตัวอย่างอุปกรณ์ป้องกันความมั่นคงปลอดภัยที่กล่าวถึงในข้อความคืออะไร?",
+      "answer_en": "An example of a security device used for protection is a Firewall.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 34,
+        "chunk_fingerprint": "(Server) (เครื่องบริการเว็บ) โดยช่วยเพิ่มประสิทธิภาพและความมั่นคงปลอดภัยในการให้บริการ\nข้อมูลจากเว็บ",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "(Server) (เครื่องบริการเว็บ) โดยช่วยเพิ่มประสิทธิภาพและความมั่นคงปลอดภัยในการให้บริการ\nข้อมูลจากเว็บไซต์หรือแอปพลิเคชัน โดยสามารถใช้งานร่วมกับส่วนหลังและฐานข้อมูลได้เพื่อการ\nจัดการและควบคุมการเข้าถึงข้อมูลอย่างมีประสิทธิภาพ\nการวางเครื่องบริการเว็บ (Web Server) ร่วมกับอุปกรณ์ป้องกันความมั่นคงปลอดภัย\n"
+    },
+    {
+      "id": "q040",
+      "question_en": "What does an asterisk next to a data item signify in the context of mitigation annotations?",
+      "question_th": "เครื่องหมายดอกจันที่อยู่ถัดจากรายการข้อมูลในการระบุคำอธิบายมาตรการบรรเทาหมายถึงอะไร?",
+      "answer_en": "An asterisk signifies that the element is required.",
+      "gold": {
+        "source": "mitre-attack-philosophy-2020.pdf",
+        "page": 26,
+        "chunk_fingerprint": "Items are annotated by tag if the data point is an informational reference on the mitigation that ca",
+        "doc_type": "textbook"
+      },
+      "chunk_preview": "Items are annotated by tag if the data point is an informational reference on the mitigation that can be used to filter and pivot on, and field if the item is a free text field used to describe mitigation-specific information and details. Items marked with relationship indicate fields that are assoc"
+    },
+    {
+      "id": "q041",
+      "question_en": "What OWASP tool can be used to verify that software components do not contain known vulnerabilities?",
+      "question_th": "เครื่องมือ OWASP ใดที่สามารถใช้ตรวจสอบว่าส่วนประกอบซอฟต์แวร์ไม่มีช่องโหว่ที่ทราบ?",
+      "answer_en": "OWASP Dependency Check or OWASP CycloneDX.",
+      "gold": {
+        "source": "owasp-top-10.pdf",
+        "page": 28,
+        "chunk_fingerprint": "Software and Data Integrity Failures Prevention\n• Use digital signatures or similar mechanisms to ve",
+        "doc_type": "slides"
+      },
+      "chunk_preview": "Software and Data Integrity Failures Prevention\n• Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.\n• Ensure libraries and dependencies, such as npm or Maven, are consuming trusted repositories. If you have a higher risk"
+    },
+    {
+      "id": "q042",
+      "question_en": "According to the document, how often should an organization conduct a cybersecurity risk assessment?",
+      "question_th": "ตามเอกสารนี้ หน่วยงานควรทำการประเมินความเสี่ยงด้านความมั่นคงปลอดภัยไซเบอร์บ่อยแค่ไหน?",
+      "answer_en": "At least once a year.",
+      "gold": {
+        "source": "thailand-web-security-standard-2025.pdf",
+        "page": 28,
+        "chunk_fingerprint": "การใช้งาน การต่ออายุการบำรุงรักษา การตัดบัญชีสินทรัพย์ และ\nการจำหน่ายทรัพย์สิน\nทรัพย์สิน เกิดชำรุด เ",
+        "doc_type": "thai_pdf"
+      },
+      "chunk_preview": "การใช้งาน การต่ออายุการบำรุงรักษา การตัดบัญชีสินทรัพย์ และ\nการจำหน่ายทรัพย์สิน\nทรัพย์สิน เกิดชำรุด เสียหาย หรือถูกละเมิด เป็นต้น\nทรัพย์สิน ทรัพย์สิน\nทรัพย์สิน ทรัพย์สินหนึ่งในการทำงานหรือให้บริการ\nทรัพย์สิน ระยะเวลาการรับประกัน ประวัติการซ่อมบำรุง รูปภาพของทรัพย์สิน\nการประเมินความเสี่ยง (Risk Assess"
+    }
+  ]
+}

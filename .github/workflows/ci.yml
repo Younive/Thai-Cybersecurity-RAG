@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main]
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5   # reads .python-version (3.11)
+      - run: uv sync --frozen          # main + dev; no extract group, no torch
+      - run: uv run pytest
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run build             # the "next build check"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e          # boots `next start` on the build above
+
+  deploy-backend:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [python-tests, web]
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS "${{ secrets.RENDER_DEPLOY_HOOK }}"

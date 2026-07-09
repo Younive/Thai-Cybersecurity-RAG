@@ -36,7 +36,12 @@ app = FastAPI(title="Thai Cybersecurity RAG API")
 # Per-IP rate limit. Each request fires paid OpenRouter calls; throttle abuse.
 # ponytail: in-memory (per-process) — single uvicorn worker only. Multi-worker
 # needs a shared backend (redis via Limiter(storage_uri=...)).
-limiter = Limiter(key_func=get_remote_address)
+def _client_ip(request: Request) -> str:
+    # Behind Vercel rewrite + Render proxy; first X-Forwarded-For hop is the real client.
+    fwd = request.headers.get("x-forwarded-for")
+    return fwd.split(",")[0].strip() if fwd else get_remote_address(request)
+
+limiter = Limiter(key_func=_client_ip)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 

@@ -5,9 +5,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
-from extractors.textbook import extract_textbook
-from extractors.slide_deck import extract_slide_deck
-from extractors.thai_pdf import extract_thai_pdf
 from extractors.utils.data_model import ExtractedContent, ExtractedDocument, ContentType
 from dotenv import load_dotenv
 import os
@@ -102,6 +99,11 @@ class RAGPipeline:
         Returns:
             Single list of ALL extracted contents (mixed types)
         """
+        # Deferred: extract-group deps (uv sync --group extract), absent in serve/CI installs.
+        from extractors.textbook import extract_textbook
+        from extractors.slide_deck import extract_slide_deck
+        from extractors.thai_pdf import extract_thai_pdf
+
         all_contents = []
         
         # Extract textbook

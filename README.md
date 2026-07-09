@@ -1,12 +1,12 @@
 # Thai-Cybersecurity-RAG
 
-Demo via HuggingFace: https://huggingface.co/spaces/Younive/cyber_rag_assignment_demo 
+Live demo: https://thai-cybersecurity-rag.vercel.app
 
 ##  Getting Started
 
 **1. Prerequisites**
 * Python 3.11+
-* Google AI Studio API Key
+* OpenRouter API Key
 * UV package manager installed
 * unstructured required system level dependency installed
     - Tesseract (tesseract-ocr)
@@ -50,8 +50,12 @@ uv sync
 
 4. Set up environment vaiables
 ```bash
-# Create .env file
-echo "GOOGLE_API_KEY=your_api_key_here" > .env
+# Create .env.local (OpenRouter)
+cat > .env.local <<'EOF'
+OPENROUTER_API_KEY=your_api_key_here
+OPENROUTER_EMBEDDING_MODEL=baai/bge-m3
+OPENROUTER_GENERAL_MODEL=google/gemini-2.5-flash
+EOF
 ```
 
 5. Run the RAG pipeline (this may take a while)
@@ -90,16 +94,22 @@ PROCESSING COMPLETE
 If successful: You'll see a new `chroma_db/` folder created.
 
 
-6. Launch the Application (application will run on localhost:7860)
+6. Launch the Application
+
+A multi-turn chat frontend (`web/`) backed by a FastAPI wrapper (`src/api.py`). It reuses the retrieval + prompt + generation pipeline. Run both processes (requires `chroma_db/` already built and `OPENROUTER_API_KEY` set):
+
 ```bash
-uv run python src/app.py
+uv run uvicorn --app-dir src api:app --port 8000   # backend API
+npm run dev --prefix web                            # frontend on http://localhost:3000
 ```
+
+The frontend proxies `/api/*` to the backend, so the browser only talks to `:3000`.
 
 ##  Project Structure
 ```plaintext
 cyber-rag-assignment/
 ├── src/
-│   ├── app.py                          # Gradio web interface
+│   ├── api.py                          # FastAPI backend (serves web/ frontend)
 │   ├── rag_pipeline.py                 # Document processing pipeline
 │   ├── retrieval.py                    # testing and experimenting retrieval functions 
 │   ├── prompt_template.py              # RAG prompt templates
@@ -133,14 +143,14 @@ cyber-rag-assignment/
     - OCR support for Thai text with Tesseract
 2. **Vector Store**
     - ChromaDB for effiecient similarity search
-    - Google text-embedding-004 model for multi-language Embedding
+    - `baai/bge-m3` model (via OpenRouter) for multi-language Embedding
     - Collection: `rag_knowledge_base`
 3. **RAG Pipeline**
     - Semantic retrieval (top-k documents)
     - Context-aware prompt building
     - Citation-enforced generation
 4. **LLM Generation**
-    - Google Gemini 2.0 Flash
+    - `google/gemini-2.5-flash` (via OpenRouter)
     - Temperature: 0.1 (factual accuracy)
     - Strict citation requirements
 
@@ -196,3 +206,25 @@ The provided documents describe persistence techniques and give examples, but do
 - better thai language content extraction
 - self-host LLM
 - Advanced chunking and indexing strategy
+
+## Changelog
+
+### 2026-07-08
+
+**Model stack → OpenRouter**
+- Migrated all models off Google GenAI onto OpenRouter (OpenAI-compatible API). Keys/models now in `.env.local`: `OPENROUTER_API_KEY`, `OPENROUTER_EMBEDDING_MODEL`, `OPENROUTER_GENERAL_MODEL`.
+- Embeddings: `baai/bge-m3` (1024-dim). Chat: `google/gemini-2.5-flash`.
+- Rebuilt `chroma_db/` (1035 chunks — MITRE 536 / Thailand 369 / OWASP 130).
+
+**UI: Gradio → Next.js**
+- Removed the Gradio app (`src/app.py`) and the `gradio` dependency.
+- The app is now the Next.js chat frontend (`web/`) over a FastAPI wrapper (`src/api.py`). See *Launch the Application* above.
+
+**Reliability**
+- Fixed intermittent chat socket hang-ups: root cause was free-tier chat model latency (up to ~50s) tripping the Next dev proxy. Swapped to the faster `gemini-2.5-flash` (~5–7s).
+- `src/api.py::/query` now catches retrieval and chat-model errors and returns proper status codes (`502` unreachable, upstream `429`/`5xx` passed through) instead of an unhandled `500`.
+- Frontend `fetch` now has a 60s timeout — a slow/hung backend fails with a clear message instead of a raw `ECONNRESET`.
+
+**Housekeeping**
+- Renamed `build_gemini_rag_prompt` → `build_rag_prompt` and `GEMINI_SYSTEM_PROMPT` → `RAG_SYSTEM_PROMPT` (provider-neutral).
+- `.gitignore` now excludes `.env.local`.
